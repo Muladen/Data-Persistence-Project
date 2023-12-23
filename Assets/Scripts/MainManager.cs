@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class MainManager : MonoBehaviour
 {
     public Brick BrickPrefab;
@@ -72,5 +73,14 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        if (m_Points > HighScoreKeeper.Instance.score)
+        {
+            HighScoreKeeper.Instance.score = m_Points;
+            HighScoreKeeper.Instance.SaveScore();
+            HighScoreKeeper.Instance.LoadScore();
+
+        }
     }
+
+    
 }
